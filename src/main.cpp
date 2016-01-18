@@ -1,12 +1,5 @@
 #include <QApplication>
 #include "slideshow_controller.h"
-/*
- * Dependencies:
- *   - mesa-libgl
- *   - gstreamer-plugins-good
- *
- *
- */
 
 int main(int argc, char *argv[])
 {
