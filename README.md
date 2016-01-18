@@ -23,6 +23,7 @@ Disclaimer: This is a pre-release version of the application.  The developer
 # To compile
 - Check Dependencies - see dependencies_list.md for more info
 - run qmake on src/SimpleSlideshow.pro
+ 
 # To Use
 - Run the application. On startup it will create a profile folder 
   called SimpleSlideshow.  Within the profile folder will be a config file 
