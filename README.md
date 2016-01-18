@@ -4,7 +4,7 @@ based on files present in selected folders.  The goal is ease of use
 and minimal user interaction, so the user can add and remove slides quickly
 without needing to halt the slideshow.  
 
-#Features
+# Features
 - Supports both image and video slides
 - Settings panel for easy access to configuration
 - Configurable slide display timers
@@ -15,10 +15,10 @@ without needing to halt the slideshow.
 - Ability to toggle inclusion of sub-folders of slides
   without removing them from local storage
 
-#To compile
+# To compile
 - Check Dependencies - see dependencies_list.txt for more info
 - run qmake on src/SimpleSlideshow.pro
-#To Use
+# To Use
 - Run the application. On startup it will create a profile folder 
   called SimpleSlideshow.  Within the profile folder will be a config file 
   and a folder called slide_directory.  The application wil look inside 
@@ -27,7 +27,8 @@ without needing to halt the slideshow.
   turned on and off easily without needing to add and remove files.
 - Note: The application does NOT display slides from the root of slide_directory.  
   This is on my todo list to fix.  
-#Supported Formats
+
+# Supported Formats
 Image
 - jpeg
 - gif
