@@ -49,7 +49,9 @@ Video
 - flv
 - wmv
 
-Slide Format Note: The codecs to display these files are not bundled with the app.  
-They must be installed separately. libvorbis and gstreamer-plugins-good will cover most
-of the open source formats, and qt5-image-format-plugins is sufficient for the image formats.  
+Slide Format Note: The codecs to display these files are not 
+bundled with the app.  They must be installed separately. 
+libvorbis and gstreamer-plugins-good will cover most
+of the open source formats, and qt5-image-format-plugins 
+is sufficient for the image formats.  
 
