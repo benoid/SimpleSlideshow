@@ -20,8 +20,7 @@ libvorbisenc.so.2
 gstreamer-plugins-good
 qt5-image-format-plugins
 
-### Dependencies which are likely  ###
-### already present on your system ###
+### Dependencies which are likely already present on your system ###
 
 linux-vdso.so.1
 libpthread.so.0
