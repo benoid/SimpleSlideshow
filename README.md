@@ -4,6 +4,11 @@ based on files present in selected folders.  The goal is ease of use
 and minimal user interaction, so the user can add and remove slides quickly
 without needing to halt the slideshow.  
 
+Disclaimer: This is a pre-release version of the application.  The developer
+            The developer is not liable for any damages caused by the use
+            or misuse of the application.  Some features may have bugs.
+            See TODO.txt for an idea of what still needs to be done.
+
 # Features
 - Supports both image and video slides
 - Settings panel for easy access to configuration
