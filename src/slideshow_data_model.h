@@ -1,3 +1,12 @@
+/* slideshow_data_model.h
+ *
+ * Author: David Benoit
+ * Purpose: Container class which stores all
+ *          configureable settings.  Is responsible for
+ *          creating and managing a SlideshowQueue
+ *          object.
+ */
+
 #ifndef SLIDESHOWDATAMODEL_H
 #define SLIDESHOWDATAMODEL_H
 

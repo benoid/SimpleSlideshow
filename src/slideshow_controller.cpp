@@ -1,3 +1,9 @@
+/* slideshow_controller.cpp
+ *
+ * Author: David Benoit
+ * Purpose: Implementation of the SlideshowController class
+ */
+
 #include "slideshow_controller.h"
 
 SlideshowController::SlideshowController(QObject *parent) : QObject(parent)

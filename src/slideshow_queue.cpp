@@ -1,3 +1,9 @@
+/* slideshow_queue.cpp
+ *
+ * Author: David Benoit
+ * Purpose: Implementation of the SlideshowQueue class
+ */
+
 #include "slideshow_queue.h"
 
 SlideshowQueue::SlideshowQueue(QObject *parent) : QObject(parent)

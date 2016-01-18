@@ -1,3 +1,13 @@
+/* settings_window_view.h
+ *
+ * Author: David Benoit
+ * Purpose: Creates a gui window for user to adjust
+ *          settings. Is respomsible for displaying info
+ *          to the screen, and also for manipulating the
+ *          filesystem to hide floders from the slideshow
+ *          upon user request.
+ */
+
 #ifndef SETTINGSWINDOWVIEW_H
 #define SETTINGSWINDOWVIEW_H
 

@@ -1,3 +1,10 @@
+/* slideshow_window_view.h
+ *
+ * Author: David Benoit
+ * Purpose: Creates a window to display image
+ *          and video slides.
+ */
+
 #ifndef SLIDESHOW_WINDOW_VIEW_H
 #define SLIDESHOW_WINDOW_VIEW_H
 

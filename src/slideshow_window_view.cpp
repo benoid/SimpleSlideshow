@@ -1,3 +1,9 @@
+/* slideshow_window_view.cpp
+ *
+ * Author: David Benoit
+ * Purpose: Implementation of the SlideshowWindowView class
+ */
+
 #include "slideshow_window_view.h"
 
 SlideshowWindowView::SlideshowWindowView(QWidget *parent)

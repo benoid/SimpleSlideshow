@@ -1,3 +1,16 @@
+/* slideshow_controller.h
+ * 
+ * Author: David Benoit
+ * Purpose: Driver class for the slideshow
+ *          creates and manages a SlideshowDataModel 
+ *          object, SlideshowWindowView object,
+ *          and SettingsWindowView object. Sends data from
+ *          config file to SlideshowDataModel.  Is responsible for
+ *          starting the slideshow.
+ *          
+ *           
+ */
+
 #ifndef SLIDESHOWCONTROLLER_H
 #define SLIDESHOWCONTROLLER_H
 

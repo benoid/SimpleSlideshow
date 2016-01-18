@@ -1,3 +1,12 @@
+/* slide.h
+ * 
+ * Author: David Benoit
+ * Purpose: Container class representing 
+ *          a slideshow slide.  Stores
+ *          file path and slide type
+ *          (IMAGE, VIDEO, or NULL_SLIDE)
+ */
+
 #ifndef SLIDE_H
 #define SLIDE_H
 

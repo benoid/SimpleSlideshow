@@ -1,3 +1,9 @@
+/* slide.cpp
+ *
+ * Author: David Benoit
+ * Purpose: Implementation of the Slide class
+ */
+
 #include "slide.h"
 
 Slide::Slide()

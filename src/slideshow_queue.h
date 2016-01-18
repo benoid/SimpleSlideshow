@@ -1,3 +1,16 @@
+/* slideshow_controller.h
+ *
+ * Author: David Benoit
+ * Purpose: Container class representing a queue of slides.
+ *          Responsible for storing Slide objects and
+ *          determining which slide to display next.
+ *          Stores information about slides as QStringLists
+ *          for ordering purpose, and creates a QMap of
+ *          slides for quick lookups, which the application
+ *          performs whenever the filesystem is parsed
+ *          (very often)
+ */
+
 #ifndef SLIDESHOWQUEUE_H
 #define SLIDESHOWQUEUE_H
 

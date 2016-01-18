@@ -1,3 +1,10 @@
+/* queue_sort_order.h
+ *
+ * Author: David Benoit
+ * Purpose: Create enumerated types representing
+ *          options for slide playback and sorting
+ */
+  
 #ifndef QUEUE_SORT_ORDER_H
 #define QUEUE_SORT_ORDER_H
 

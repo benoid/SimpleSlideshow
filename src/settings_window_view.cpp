@@ -1,3 +1,9 @@
+/* settings_window_view.cpp
+ *
+ * Author: David Benoit
+ * Purpose: Implementation of the SettingsWindowView class
+ */
+
 #include "settings_window_view.h"
 #include "ui_settings_window_view.h"
 #include <QString>

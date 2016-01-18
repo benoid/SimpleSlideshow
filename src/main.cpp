@@ -1,3 +1,10 @@
+/* main.cpp
+ * 
+ * Author: David Benoit
+ * Purpose: nain function for SimpleSlieshow
+ */
+
+
 #include <QApplication>
 #include "slideshow_controller.h"
 

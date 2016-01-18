@@ -1,3 +1,14 @@
+/* slide_directory.h
+ * 
+ * Author: David Benoit
+ * Purpose: Container class representing 
+ *          a directory of slides.  Stores
+ *          information about the name, file path
+ *          whether the directory contains informational/
+ *          marketing slides, and whether the user has chosen 
+ *          to exclude the directory from the slideshow
+ */
+
 #ifndef SLIDEDIRECTORY_H
 #define SLIDEDIRECTORY_H
 
