@@ -7,7 +7,7 @@ without needing to halt the slideshow.
 Disclaimer: This is a pre-release version of the application.  The developer
             The developer is not liable for any damages caused by the use
             or misuse of the application.  Some features may have bugs.
-            See TODO.txt for an idea of what still needs to be done.
+            See TODO.md for an idea of what still needs to be done.
 
 # Features
 - Supports both image and video slides
@@ -21,7 +21,7 @@ Disclaimer: This is a pre-release version of the application.  The developer
   without removing them from local storage
 
 # To compile
-- Check Dependencies - see dependencies_list.txt for more info
+- Check Dependencies - see dependencies_list.md for more info
 - run qmake on src/SimpleSlideshow.pro
 # To Use
 - Run the application. On startup it will create a profile folder 
