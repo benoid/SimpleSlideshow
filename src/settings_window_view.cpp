@@ -94,7 +94,6 @@ SettingsWindowView::SettingsWindowView(QWidget *parent) :
 
 SettingsWindowView::~SettingsWindowView()
 {
-  ui->tableWidget->clear();
   delete ui;
 }
 
