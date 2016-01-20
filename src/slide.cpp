@@ -26,7 +26,7 @@ Slide::Slide(QString path)
 
 SlideType Slide::get_slide_type(QString path)
 {
-  QString extension = QFileInfo(path).completeSuffix();
+  QString extension = QFileInfo(path).completeSuffix().toLower();
   if (extension.contains("jpg"))
     {
       return IMAGE;

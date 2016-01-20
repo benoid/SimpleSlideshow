@@ -21,6 +21,7 @@ class SlideshowDataModel : public QObject
   Q_OBJECT
 public:
   explicit SlideshowDataModel(QObject *parent = 0);
+  ~SlideshowDataModel();
 
 /*** Mutators ***/
   void set_profile_folder(QString folder){

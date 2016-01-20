@@ -31,6 +31,9 @@ class SlideshowController : public QObject
   Q_OBJECT
 public:
   explicit SlideshowController(QObject *parent = 0);
+  ~SlideshowController();
+  
+  // Starts the slideshow
   void begin_slideshow();
 
 signals:
@@ -68,17 +71,6 @@ private:
   SlideshowWindowView *slideshow_window_view_;
   SettingsWindowView * settings_window_view_;
 
-  /*** Context menu and corresonding actions ***/
-    // Right-click context menu
-    QMenu * context_menu_;
-
-
-
-    // Opens settings window to folder management tab
-    QAction * show_directories_view_action_;
-
-    // Quits the application
-    QAction * quit_application_action_;
 
 /*** Slideshow Timers ***/
   // Slide is updated upon timeout

@@ -74,7 +74,15 @@ SlideshowWindowView::SlideshowWindowView(QWidget *parent)
 
 SlideshowWindowView::~SlideshowWindowView()
 {
-
+  stacked_widget_->deleteLater();
+  scroll_area_widget_->deleteLater();
+  image_display_label_->deleteLater();
+  media_player_->deleteLater();
+  media_playlist_->deleteLater();
+  video_widget_->deleteLater();
+  context_menu_->deleteLater();
+  show_settings_view_action_->deleteLater();
+  quit_application_action_->deleteLater();
 
 }
 

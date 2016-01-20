@@ -11,3 +11,8 @@ SlideshowDataModel::SlideshowDataModel(QObject *parent) : QObject(parent)
   slideshow_queue_ = new SlideshowQueue;
 }
 
+SlideshowDataModel::~SlideshowDataModel()
+{
+  slideshow_queue_->deleteLater();
+}
+

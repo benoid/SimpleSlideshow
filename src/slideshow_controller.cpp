@@ -37,6 +37,13 @@ SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
 
 }
 
+SlideshowController::~SlideshowController()
+{
+  slideshow_data_model_->deleteLater();
+  slideshow_window_view_->deleteLater();
+  settings_window_view_->deleteLater();
+}
+
 void SlideshowController::begin_slideshow()
 {
 
