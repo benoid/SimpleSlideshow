@@ -8,6 +8,7 @@
     but bits of code still remain)
   - Add functionality to perform operations
     on multiple folders simultaneously
+  - Fix folder selection dialog
 
 2) Lint code
   - Add more comments to private data members
