@@ -1,7 +1,7 @@
 /* main.cpp
  * 
  * Author: David Benoit
- * Purpose: main function for SimpleSlieshow
+ * Purpose: main function for SimpleSlideshow
  */
 
 
