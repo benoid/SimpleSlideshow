@@ -481,7 +481,7 @@ void SlideshowController::refresh_directory_list()
               temp.set_dir_name(dir_iterator.fileName());
 
               temp.set_full_path(dir_iterator.fileInfo().absoluteFilePath());
-              if (temp.name() == "Marketing")
+              if (temp.name().contains("-info"))
                 {
                   temp.set_marketing_folder(true);
                 }
