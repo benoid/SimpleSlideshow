@@ -32,6 +32,8 @@ SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
           this, SLOT(gui_cancel_button_pressed()));
   connect(&main_slide_timer_, SIGNAL(timeout()),
           this, SLOT(show_next_slide()));
+  connect(settings_window_view_, SIGNAL(slide_folder_changed()),
+          slideshow_data_model_->slideshow_queue(), SLOT(clear_queue()));
 
 /*************************/
 

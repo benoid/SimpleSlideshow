@@ -80,6 +80,7 @@ signals:
   void ok_button_pressed();
   void cancel_button_pressed();
   void apply_button_pressed();
+  void slide_folder_changed();
 
 private:
   Ui::SettingsWindowView *ui;

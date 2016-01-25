@@ -84,6 +84,9 @@ signals:
   void finished_marketing();
 
 public slots:
+  // Clears contents of queue
+  void clear_queue();
+
 
 private:
   // Slide map to provide quick lookups

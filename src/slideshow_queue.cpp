@@ -117,6 +117,16 @@ int SlideshowQueue::size()
   return slide_map_.size();
 }
 
+void SlideshowQueue::clear_queue()
+{
+  slide_map_.clear();
+  main_image_list_.clear();
+  marketing_image_list_.clear();
+  main_queue_index_ = 0;
+  marketing_queue_index_ = 0;
+
+}
+
 Slide SlideshowQueue::private_service()
 {
   Slide current_slide;

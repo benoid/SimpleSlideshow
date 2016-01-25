@@ -32,6 +32,12 @@ void SettingsWindowView::apply_settings()
   fullscreen_disabled_bool_ = ui->checkBox->isChecked();
   begin_on_marketing_slide_bool_ = ui->checkBox_5->isChecked();
 
+  if (slide_folder_path() != ui->lineEdit_4->text())
+    {
+      slide_folder_path_ = ui->lineEdit_4->text();
+      emit slide_folder_changed();
+    }
+
   for (int i = 0; i < ui->tableWidget->rowCount(); ++i)
     {
       bool match_found = false;
