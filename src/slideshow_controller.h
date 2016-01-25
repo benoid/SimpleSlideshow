@@ -94,10 +94,6 @@ private:
   // Checks main slide folder,
   // adds new slides,
   // removes nonexistant slides
-  void refresh_slide_queue(); // This has an empty definition.
-                              // TODO: Check for references and
-                              // remove if unused
-
   void refresh_directory_list();
   void build_slide_queue();
 

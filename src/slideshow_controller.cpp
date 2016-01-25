@@ -442,16 +442,6 @@ void SlideshowController::warn_config_error(QString key, QString value_str)
                 value_str << ". Resetting to default";
 }
 
-// Check for references and remove this
-void SlideshowController::refresh_slide_queue()
-{
-
-
-}
-
-
-
-
 void SlideshowController::refresh_directory_list()
 {
   QDirIterator dir_iterator(slideshow_data_model_->main_image_folder_path(),
