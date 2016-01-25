@@ -151,6 +151,21 @@ Slide SlideshowQueue::private_service()
           queue_marketing_slide_ = false;
           emit finished_marketing();
         }
+
+      else if (marketing_queue_index_ < marketing_image_list_.size() -1)
+        {
+          QString next_slide_path = marketing_image_list_.value(
+                marketing_queue_index_ + 1);
+          QString current_slide_dir = QFileInfo(current_slide.full_path()).
+                                       absoluteDir().absolutePath();
+          QString next_slide_dir = QFileInfo(next_slide_path).absoluteDir().
+                                       absolutePath();
+          if (current_slide_dir != next_slide_dir)
+            {
+              queue_marketing_slide_ = false;
+              emit finished_marketing();
+            }
+        }
       if (!QFile(current_slide.full_path()).exists())
         {
           current_slide.set_slide_type(NULL_SLIDE);
