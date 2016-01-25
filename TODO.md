@@ -18,8 +18,7 @@
     related classes
   - Ensure all member names are descriptive
   - Remove irrelevant debugging output
-  - IMPORTANT: provide class destructors
-  - 
+  
 3) Save file
   - Parse save file between slide changes
     to allow for remote manipulation via save file
