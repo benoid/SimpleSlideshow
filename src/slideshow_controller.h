@@ -18,6 +18,7 @@
 #include <QTimer>
 #include <QMenu>
 #include <QDesktopServices>
+#include <QDesktopWidget>
 #include <QTextStream>
 #include <QDir>
 #include <QDirIterator>

@@ -59,13 +59,16 @@ void SlideshowController::begin_slideshow()
     }
   else
     {
+
       slideshow_window_view_->showFullScreen();
     }
   if (slideshow_data_model_->begin_on_marketing())
     {
       queue_marketing_slide();
     }
-  show_next_slide();
+  // Allow some time for the window to show fullsceen so the image
+  // isn't small
+  QTimer::singleShot(1000, this, SLOT(show_next_slide()));
   main_slide_timer_.start(
         slideshow_data_model_->main_timer_interval());
   marketing_slide_timer_.start(
@@ -207,6 +210,7 @@ void SlideshowController::save_config_file(QString file_path)
     }
 }
 
+// Refactor?
 void SlideshowController::parse_config_file(QString file_path)
 {
   QFile config_file(file_path);
