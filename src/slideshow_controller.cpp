@@ -66,9 +66,10 @@ void SlideshowController::begin_slideshow()
     {
       queue_marketing_slide();
     }
-  // Allow some time for the window to show fullsceen so the image
-  // isn't small
-  QTimer::singleShot(1000, this, SLOT(show_next_slide()));
+  // Delay display of first slide to account for external
+  // desktop effects
+  int init_delay = slideshow_data_model_->init_delay_millisecs();
+  QTimer::singleShot(init_delay, this, SLOT(show_next_slide()));
   main_slide_timer_.start(
         slideshow_data_model_->main_timer_interval());
   marketing_slide_timer_.start(
@@ -142,6 +143,8 @@ void SlideshowController::set_all_settings_to_default()
  slideshow_data_model_->set_fullscreen_disabled(false);
  slideshow_data_model_->set_video_disabled(false);
  slideshow_data_model_->set_begin_on_marketing(true);
+ slideshow_data_model_->slideshow_queue()->set_marketing_option(CONSECUTIVE);
+ slideshow_data_model_->set_init_delay(100);
 
 }
 
@@ -205,6 +208,9 @@ void SlideshowController::save_config_file(QString file_path)
                  << endl;
       out_stream << "begin_on_marketing_slide="
                  << slideshow_data_model_->begin_on_marketing()
+                 << endl;
+      out_stream << "init_delay="
+                 << slideshow_data_model_->init_delay_millisecs()
                  << endl;
       config_file.close();
     }
@@ -350,6 +356,19 @@ void SlideshowController::parse_config_file(QString file_path)
               if (value_is_integer && value_int >= 0)
                 {
                   slideshow_data_model_->set_begin_on_marketing(value_int);
+                }
+              else
+                {
+                  warn_config_error(key, value_str);
+                }
+            }
+          else if (key == "init_delay")
+            {
+              bool value_is_integer;
+              value_int = value_str.toInt(&value_is_integer);
+              if (value_is_integer && value_int >= 0)
+                {
+                  slideshow_data_model_->set_init_delay(value_int);
                 }
               else
                 {

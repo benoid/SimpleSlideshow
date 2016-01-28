@@ -37,6 +37,7 @@ public:
   void set_config_file(QString file){config_file_path_ = file;}
   void set_video_disabled(bool set){video_disabled_ = set;}
   void set_begin_on_marketing(bool set){begin_on_marketing_ = set;}
+  void set_init_delay(int num_millisecs){init_delay_ms_ = num_millisecs;}
 
 /*** Accessors ***/
   SlideshowQueue * slideshow_queue(){return slideshow_queue_;}
@@ -49,6 +50,7 @@ public:
   bool fullscreen_disabled(){return fullscreen_disabled_bool_;}
   bool video_disabled(){return video_disabled_;}
   bool begin_on_marketing(){return begin_on_marketing_;}
+  int init_delay_millisecs() {return init_delay_ms_;}
 
 signals:
 
@@ -87,6 +89,10 @@ private:
   // True means a marketing slide will be queued
   // on application startup
   bool begin_on_marketing_;
+
+  // Delay display of first slide to account for external
+  // desktop effects
+  int init_delay_ms_;
 
 };
 
