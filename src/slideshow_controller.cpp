@@ -496,6 +496,8 @@ void SlideshowController::refresh_directory_list()
 
 void SlideshowController::build_slide_queue()
 {
+  bool slides_were_added = false;
+
   refresh_directory_list();
   for (int i = 0;
        i < slideshow_data_model_->slide_dir_list()->size();
@@ -524,18 +526,30 @@ void SlideshowController::build_slide_queue()
           else if(current_dir.is_marketing_folder())
             {
       //        qWarning() << "marketing";
-              slideshow_data_model_->slideshow_queue()->
-                  add_marketing_slide(current_slide);
+              if(slideshow_data_model_->slideshow_queue()->
+                  add_marketing_slide(current_slide))
+                {
+                  slides_were_added = true;
+                }
             }
           else
             {
         //      qWarning () << "slide";
-              slideshow_data_model_->slideshow_queue()->
-                  add_slide(current_slide);
+              if (slideshow_data_model_->slideshow_queue()->
+                  add_slide(current_slide))
+                {
+                  slides_were_added = true;
+                }
 
             }
          // qWarning() <<"[i]: "<< subdir_iterator.filePath();
         }
+    }
+
+  // If slides were added to the queue, sort the lists
+  if (slides_were_added)
+    {
+      slideshow_data_model_->slideshow_queue()->sort_all_lists();
     }
   qWarning() << slideshow_data_model_->slideshow_queue()->size();
 }

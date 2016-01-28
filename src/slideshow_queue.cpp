@@ -24,40 +24,57 @@ Slide SlideshowQueue::service()
   return current_slide;
 }
 
-void SlideshowQueue::add_slide(QString path, SlideType type)
+int SlideshowQueue::add_slide(QString path, SlideType type)
 {
   if (!slide_map_.contains(path))
     {
       slide_map_.insert(path, type);
       main_image_list_.append(path);
+
+      // Slide was added
+      return 1;
     }
+  // Slide was not added
+  return 0;
 }
 
-void SlideshowQueue::add_slide(Slide slide)
+int SlideshowQueue::add_slide(Slide slide)
 {
   if (!slide_map_.contains(slide.full_path()))
     {
       slide_map_.insert(slide.full_path(), slide.slide_type());
       main_image_list_.append(slide.full_path());
+      // Slide was added
+      return 1;
     }
+  // Slide was not added
+  return 0;
 }
 
-void SlideshowQueue::add_marketing_slide(QString path, SlideType type)
+int SlideshowQueue::add_marketing_slide(QString path, SlideType type)
 {
   if (!slide_map_.contains(path))
     {
       slide_map_.insert(path, type);
       marketing_image_list_.append(path);
+      // Slide was added
+      return 1;
     }
+  // Slide was not added
+  return 0;
 }
 
-void SlideshowQueue::add_marketing_slide(Slide slide)
+int SlideshowQueue::add_marketing_slide(Slide slide)
 {
   if (!slide_map_.contains(slide.full_path()))
     {
       slide_map_.insert(slide.full_path(), slide.slide_type());
       marketing_image_list_.append(slide.full_path());
+      // Slide was added
+      return 1;
     }
+  // Slide was not added
+  return 0;
 }
 
 void SlideshowQueue::set_marketing_order(QueueSortOrder option)
@@ -115,6 +132,12 @@ void SlideshowQueue::queue_marketing_slide()
 int SlideshowQueue::size()
 {
   return slide_map_.size();
+}
+
+void SlideshowQueue::sort_all_lists()
+{
+  sort_list(&main_image_list_, main_sort_order_);
+  sort_list(&marketing_image_list_, marketing_sort_order_);
 }
 
 void SlideshowQueue::clear_queue()

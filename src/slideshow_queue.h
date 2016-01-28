@@ -40,17 +40,17 @@ public:
 
   // Creates a slide from the file path and slide type
   // and adds it to the main queue
-  void add_slide(QString path, SlideType type);
+  int add_slide(QString path, SlideType type);
 
   // Copies a slide and adds it to the main queue
-  void add_slide(Slide slide);
+  int add_slide(Slide slide);
 
   // Creates a slide from the file path and slide type
   // and adds it to the marketing queue
-  void add_marketing_slide(QString path, SlideType type);
+  int add_marketing_slide(QString path, SlideType type);
 
   // Copies a slide and adds it to the main queue
-  void add_marketing_slide(Slide slide);
+  int add_marketing_slide(Slide slide);
 
   // Returns true if queue contains a
   // slide whose path matches the key
@@ -64,6 +64,9 @@ public:
 
   // Returns the number of slides in the queue
   int size();
+
+  // Sort both queues
+  void sort_all_lists();
 
   //Mutators
   void set_marketing_order(QueueSortOrder option);
