@@ -113,7 +113,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Marketing Timer Interval (seconds)</string>
+      <string>Info Timer Interval (seconds)</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -152,7 +152,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Begin on Marketing Slide</string>
+      <string>Begin on Info Slide</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -227,7 +227,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Randomized</string>
+       <string>Randomized (incompatible with consecutive info slides</string>
       </property>
      </item>
     </widget>
@@ -254,7 +254,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Marketing Play Order</string>
+      <string>Info Slide Play Order</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="checkBox_6">
@@ -267,7 +267,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Consecutive Marketing </string>
+      <string>Consecutive Info Slides</string>
      </property>
      <property name="checked">
       <bool>true</bool>
