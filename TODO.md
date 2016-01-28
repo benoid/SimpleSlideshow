@@ -21,9 +21,9 @@
   
 3) Test some things
    - Test that the sort functions are
-     legitimately working
+     legitimately working - DONE
    - Test for memory leaks
-   - 
+    
 4) Add functonality to check for codecs and
    avoid trying to play videos for which codecs
    are not installed
