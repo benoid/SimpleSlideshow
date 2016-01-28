@@ -163,9 +163,9 @@ void SlideshowController::ensure_folder_structure()
        if (config_file.open(QIODevice::ReadWrite))
          {
            QTextStream text_stream(&config_file);
+           save_config_file(slideshow_data_model_->config_file_path());
          }
     }
-  save_config_file(slideshow_data_model_->config_file_path());
    /* Qt automatically closes files in
     * this context.
     */
