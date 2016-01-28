@@ -236,12 +236,12 @@
       <rect>
        <x>20</x>
        <y>70</y>
-       <width>121</width>
+       <width>201</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>Slide Play Order</string>
+      <string>Content Slide Play Order</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
