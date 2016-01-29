@@ -37,6 +37,16 @@ SettingsWindowView::SettingsWindowView(QWidget *parent) :
   this->setFixedSize(724, 385);
   this->setWindowFlags(Qt::WindowStaysOnTopHint);
 
+  fullscreen_disabled_bool_ = 0;
+  begin_on_marketing_slide_bool_ = 0;
+  randomize_images_bool_ = 0;
+  main_timer_interval_ = 0;
+  marketing_timer_interval_ = 0;
+  main_sort_order_ = 0;
+  marketing_sort_order_ = 0;
+  marketing_playback_option_ = 0;
+
+
   // Set tabWidget to settings tab
   ui->tabWidget->setCurrentIndex(0);
   connect(ui->tableWidget->horizontalHeader(), SIGNAL(sectionClicked(int)), ui->tableWidget, SLOT(sortByColumn(int)));

@@ -31,6 +31,8 @@ SlideshowQueue::SlideshowQueue(QObject *parent) : QObject(parent)
   queue_marketing_slide_ = 0;
   main_queue_index_ = 0;
   marketing_queue_index_ = 0;
+  main_sort_order_ = 0;
+  marketing_sort_order_ = 0;
 }
 
 Slide SlideshowQueue::service()

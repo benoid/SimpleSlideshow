@@ -25,6 +25,7 @@
 SlideDirectory::SlideDirectory()
 {
   marketing_folder_ = false;
+  exclude_from_slideshow_ = false;
 }
 
 QString SlideDirectory::name()

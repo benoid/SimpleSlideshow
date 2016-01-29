@@ -25,6 +25,12 @@
 SlideshowDataModel::SlideshowDataModel(QObject *parent) : QObject(parent)
 {
   slideshow_queue_ = new SlideshowQueue;
+  main_timer_interval_ = 10;
+  marketing_timer_interval_ = 50;
+  fullscreen_disabled_bool_ = false;
+  video_disabled_ = false;
+  begin_on_marketing_ = true;
+  init_delay_ms_ = 100;
 }
 
 SlideshowDataModel::~SlideshowDataModel()
