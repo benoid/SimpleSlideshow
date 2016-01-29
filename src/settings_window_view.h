@@ -40,41 +40,28 @@ public:
   void set_focus_folders_tab();
 
   // Mutators
-  void set_slide_folder_path(QString set_path){
-    slide_folder_path_ = set_path;}
-  void set_main_timer_interval(int set_interval){
-    main_timer_interval_ = set_interval;}
-  void set_marketing_timer_interval(int set_interval){
-    marketing_timer_interval_ = set_interval;}
-  void set_fullscreen_disabled(bool set_disabled){
-    fullscreen_disabled_bool_ = set_disabled;}
-  void set_begin_on_marketing_slide(bool set_enabled){
-    begin_on_marketing_slide_bool_ = set_enabled;}
-  void set_randomize_images(bool set_enabled){
-    randomize_images_bool_ = set_enabled;}
+  void set_slide_folder_path(QString set_path);
+  void set_main_timer_interval(int set_interval);
+  void set_marketing_timer_interval(int set_interval);
+  void set_fullscreen_disabled(bool set_disabled);
+  void set_begin_on_marketing_slide(bool set_enabled);
+  void set_randomize_images(bool set_enabled);
   void set_slide_directory_list(QList<SlideDirectory> dir_list);
-  void set_marketing_order(QueueSortOrder option){
-    marketing_sort_order_ = option;}
-  void set_main_order(QueueSortOrder option){
-    main_sort_order_ = option;}
-  void set_marketing_option(MarketingPlaybackOption option){
-    marketing_playback_option_ = option;}
+  void set_marketing_order(QueueSortOrder option);
+  void set_main_order(QueueSortOrder option);
+  void set_marketing_option(MarketingPlaybackOption option);
 
 
   // Accessors
-  QueueSortOrder main_order_option(){
-    return main_sort_order_;}
-  QueueSortOrder marketing_order_option(){
-    return marketing_sort_order_;}
-  MarketingPlaybackOption marketing_option(){
-    return marketing_playback_option_;}
-  bool begin_on_marketing_slide_bool(){
-    return begin_on_marketing_slide_bool_;}
-  bool randomize_images_bool(){return randomize_images_bool_;}
-  int main_timer_interval(){return main_timer_interval_;}
-  int marketing_timer_interval(){return marketing_timer_interval_;}
-  bool fullscreen_disabled(){return fullscreen_disabled_bool_;}
-  QString slide_folder_path(){return slide_folder_path_;}
+  QueueSortOrder main_order_option();
+  QueueSortOrder marketing_order_option();
+  MarketingPlaybackOption marketing_option();
+  bool begin_on_marketing_slide_bool();
+  bool randomize_images_bool();
+  int main_timer_interval();
+  int marketing_timer_interval();
+  bool fullscreen_disabled();
+  QString slide_folder_path();
 
 signals:
   void ok_button_pressed();

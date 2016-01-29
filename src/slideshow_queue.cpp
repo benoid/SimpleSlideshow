@@ -96,6 +96,26 @@ void SlideshowQueue::set_main_order(QueueSortOrder option)
   qWarning() << main_image_list_;
 }
 
+void SlideshowQueue::set_marketing_option(MarketingPlaybackOption option)
+{
+  marketing_playback_option_ = option;
+}
+
+QueueSortOrder SlideshowQueue::main_order_option()
+{
+  return main_sort_order_;
+}
+
+QueueSortOrder SlideshowQueue::marketing_order_option()
+{
+  return marketing_sort_order_;
+}
+
+MarketingPlaybackOption SlideshowQueue::marketing_option()
+{
+  return marketing_playback_option_;
+}
+
 bool SlideshowQueue::contains(QString key)
 {
   if (slide_map_.contains(key))

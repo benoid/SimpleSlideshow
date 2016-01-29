@@ -24,6 +24,25 @@ Slide::Slide(QString path)
 
 }
 
+void Slide::set_full_path(QString path)
+{
+  full_path_ = path;
+}
+
+void Slide::set_slide_type(SlideType type){
+  slide_type_ = type;
+}
+
+QString Slide::full_path()
+{
+  return full_path_;
+}
+
+SlideType Slide::slide_type()
+{
+  return slide_type_;
+}
+
 SlideType Slide::get_slide_type(QString path)
 {
   QString extension = QFileInfo(path).completeSuffix().toLower();

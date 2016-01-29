@@ -75,10 +75,10 @@ void SettingsWindowView::apply_settings()
                     {
                       // File should be hidden
                       slide_directory_list_[j].set_dir_name(
-                         ui->tableWidget->item(i,0)->text());
+                            ui->tableWidget->item(i,0)->text());
                       QDir().rename(slide_directory_list_[j].full_path(),
-                                slide_folder_path_ + "/"
-                                + slide_directory_list_[j].name());
+                                    slide_folder_path_ + "/"
+                                    + slide_directory_list_[j].name());
                     }
                 }
             }
@@ -128,7 +128,7 @@ void SettingsWindowView::set_up_gui()
         {
           // Strip dot from hidden folder
           ui->tableWidget->item(0,0)->setText(
-          ui->tableWidget->item(0,0)->text().remove(0,1));
+                ui->tableWidget->item(0,0)->text().remove(0,1));
           table_item->setCheckState(Qt::Unchecked);
         }
       else
@@ -171,9 +171,100 @@ void SettingsWindowView::set_focus_folders_tab()
   ui->tabWidget->setCurrentIndex(1);
 }
 
+void SettingsWindowView::set_slide_folder_path(QString set_path)
+{
+  slide_folder_path_ = set_path;
+}
+
+void SettingsWindowView::set_main_timer_interval(int set_interval)
+{
+  main_timer_interval_ = set_interval;
+}
+
+void SettingsWindowView::set_marketing_timer_interval(int set_interval)
+{
+  marketing_timer_interval_ = set_interval;
+}
+
+void SettingsWindowView::set_fullscreen_disabled(bool set_disabled)
+{
+  fullscreen_disabled_bool_ = set_disabled;
+}
+
+void SettingsWindowView::set_begin_on_marketing_slide(bool set_enabled)
+{
+  begin_on_marketing_slide_bool_ = set_enabled;
+}
+
+void SettingsWindowView::set_randomize_images(bool set_enabled)
+{
+
+  randomize_images_bool_ = set_enabled;
+}
+
 void SettingsWindowView::set_slide_directory_list(QList<SlideDirectory> dir_list)
 {
   slide_directory_list_ = dir_list;
+}
+
+void SettingsWindowView::set_marketing_order(QueueSortOrder option)
+{
+  marketing_sort_order_ = option;
+}
+
+void SettingsWindowView::set_main_order(QueueSortOrder option)
+{
+  main_sort_order_ = option;
+}
+
+void SettingsWindowView::set_marketing_option(MarketingPlaybackOption option)
+{
+  marketing_playback_option_ = option;
+}
+
+QueueSortOrder SettingsWindowView::main_order_option()
+{
+  return main_sort_order_;
+}
+
+QueueSortOrder SettingsWindowView::marketing_order_option()
+{
+  return marketing_sort_order_;
+}
+
+MarketingPlaybackOption SettingsWindowView::marketing_option()
+{
+  return marketing_playback_option_;
+}
+
+bool SettingsWindowView::begin_on_marketing_slide_bool()
+{
+  return begin_on_marketing_slide_bool_;
+}
+
+bool SettingsWindowView::randomize_images_bool()
+{
+  return randomize_images_bool_;
+}
+
+int SettingsWindowView::main_timer_interval()
+{
+  return main_timer_interval_;
+}
+
+int SettingsWindowView::marketing_timer_interval()
+{
+  return marketing_timer_interval_;
+}
+
+bool SettingsWindowView::fullscreen_disabled()
+{
+  return fullscreen_disabled_bool_;
+}
+
+QString SettingsWindowView::slide_folder_path()
+{
+  return slide_folder_path_;
 }
 
 void SettingsWindowView::on_buttonBox_accepted()

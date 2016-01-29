@@ -27,13 +27,13 @@ public:
   Slide(QString path);
 
 /*** Mutators ***/
-  void set_full_path(QString path){full_path_ = path;}
-  void set_slide_type(SlideType type){slide_type_ = type;}
+  void set_full_path(QString path);
+  void set_slide_type(SlideType type);
 
 
 /*** Accessors ***/
-  QString full_path(){return full_path_;}
-  SlideType slide_type(){return slide_type_;}
+  QString full_path();
+  SlideType slide_type();
 
 private:
   QString full_path_;

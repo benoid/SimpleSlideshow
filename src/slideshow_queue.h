@@ -71,15 +71,12 @@ public:
   //Mutators
   void set_marketing_order(QueueSortOrder option);
   void set_main_order(QueueSortOrder option);
-  void set_marketing_option(MarketingPlaybackOption option){
-    marketing_playback_option_ = option;}
+  void set_marketing_option(MarketingPlaybackOption option);
 
   // Accessors
-  QueueSortOrder main_order_option(){
-    return main_sort_order_;}
-  QueueSortOrder marketing_order_option(){
-    return marketing_sort_order_;}
-  MarketingPlaybackOption marketing_option(){return marketing_playback_option_;}
+  QueueSortOrder main_order_option();
+  QueueSortOrder marketing_order_option();
+  MarketingPlaybackOption marketing_option();
 
 
 
