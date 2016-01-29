@@ -4,6 +4,7 @@
  * Purpose: Implementation of the SlideshowController class
  */
 
+#include <qglobal.h>
 #include "slideshow_controller.h"
 
 SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
@@ -62,8 +63,12 @@ void SlideshowController::begin_slideshow()
       // showFullscreen() seems to only work on linux and mac. For now, we
       // will emulate fullscreen with frameless maximized window so the app
       // doesn't break on windows.
-      slideshow_window_view_->setWindowFlags(Qt::FramelessWindowHint);
-      slideshow_window_view_->showMaximized();
+      #ifdef Q_OS_WIN
+        slideshow_window_view_->setWindowFlags(Qt::FramelessWindowHint);
+        slideshow_window_view_->showMaximized();
+      #else
+        slideshow_window_view_->showFullScreen();
+      #endif
     }
   if (slideshow_data_model_->begin_on_marketing())
     {
