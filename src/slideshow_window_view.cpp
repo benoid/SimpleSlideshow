@@ -1,8 +1,24 @@
+/*    Copyright (C) 2016 David Benoit
+
+    This file is part of SimpleSlideshow.
+
+    SimpleSlideshow is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleSlideshow is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
+
 /* slideshow_window_view.cpp
- *
- * Author: David Benoit
- * Purpose: Implementation of the SlideshowWindowView class
- */
+
+   Author: David Benoit
+   Purpose: Implementation of the SlideshowWindowView class. */
 
 #include <QFile>
 #include <QApplication>
@@ -60,15 +76,21 @@ SlideshowWindowView::SlideshowWindowView(QWidget *parent)
 
   // Set up menu actions
   show_settings_view_action_= new QAction("Settings", this);
+  show_about_slideshow_action_ = new QAction("About SimpleSlideshow", this);
+  show_about_qt_action_ = new QAction("About Qt", this);
   quit_application_action_= new QAction("Quit", this);
 
   // Add actions to menu
   context_menu_->addAction(show_settings_view_action_);
+  context_menu_->addAction(show_about_slideshow_action_);
+  context_menu_->addAction(show_about_qt_action_);
   context_menu_->addAction(quit_application_action_);
 
   // Connect context menu action SIGNALS to SLOTS
   connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(show_context_menu(const QPoint &)));
   connect(quit_application_action_, SIGNAL(triggered(bool)), this, SLOT(quit_application()));
+  connect(show_about_slideshow_action_, SIGNAL(triggered(bool)), this, SLOT(show_about_slideshow()));
+  connect(show_about_qt_action_, SIGNAL(triggered(bool)), this, SLOT(show_about_qt()));
   connect(show_settings_view_action_, SIGNAL(triggered(bool)), this, SLOT(show_settings_view()));
 
 
@@ -149,6 +171,16 @@ void SlideshowWindowView::show_context_menu(const QPoint &pos)
 void SlideshowWindowView::show_settings_view()
 {
   emit settings_option_clicked();
+}
+
+void SlideshowWindowView::show_about_slideshow()
+{
+  emit about_slideshow_clicked();
+}
+
+void SlideshowWindowView::show_about_qt()
+{
+  emit about_qt_clicked();
 }
 
 void SlideshowWindowView::quit_application()

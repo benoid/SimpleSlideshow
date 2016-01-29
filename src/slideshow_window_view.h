@@ -1,9 +1,25 @@
-/* slideshow_window_view.h
- *
- * Author: David Benoit
- * Purpose: Creates a window to display image
- *          and video slides.
- */
+/*  Copyright (C) 2016 David Benoit
+
+    This file is part of SimpleSlideshow.
+
+    SimpleSlideshow is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleSlideshow is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>.
+    slideshow_window_view.h */
+
+
+ /* Author: David Benoit
+    Purpose: Creates a window to display image
+             and video slides. */
 
 #ifndef SLIDESHOW_WINDOW_VIEW_H
 #define SLIDESHOW_WINDOW_VIEW_H
@@ -45,7 +61,14 @@ public slots:
   void show_context_menu(const QPoint &pos);
 
   // Emits settings settings_option_clicked signal
+  // SlideshowController will open the settings window
   void show_settings_view();
+
+  // Opens the About Slideshow window
+  void show_about_slideshow();
+
+  // Opens the About Qt window
+  void show_about_qt();
 
   // Closes the application
   void quit_application();
@@ -55,8 +78,10 @@ public slots:
 
 
 signals:
- void settings_option_clicked();
- void video_finished_playing();
+  void about_slideshow_clicked();
+  void about_qt_clicked();
+  void settings_option_clicked();
+  void video_finished_playing();
 
 private:
 
@@ -76,6 +101,12 @@ private:
 
   // Opens settings window to main tab
   QAction * show_settings_view_action_;
+
+  // Opens the About Slideshow window
+  QAction * show_about_slideshow_action_;
+
+  // Opens the About Qt window
+  QAction * show_about_qt_action_;
 
   // Quits the application
   QAction * quit_application_action_;

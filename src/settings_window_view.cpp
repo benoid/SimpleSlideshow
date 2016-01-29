@@ -1,8 +1,24 @@
+/*  Copyright (C) 2016 David Benoit
+
+    This file is part of SimpleSlideshow.
+
+    SimpleSlideshow is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleSlideshow is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
+
 /* settings_window_view.cpp
- *
- * Author: David Benoit
- * Purpose: Implementation of the SettingsWindowView class
- */
+
+   Author: David Benoit
+   Purpose: Implementation of the SettingsWindowView class. */
 
 #include "settings_window_view.h"
 #include "ui_settings_window_view.h"
@@ -10,6 +26,22 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileDialog>
+
+
+SettingsWindowView::SettingsWindowView(QWidget *parent) :
+  QDialog(parent),
+  ui(new Ui::SettingsWindowView)
+{
+  ui->setupUi(this);
+  this->setWindowTitle("Application Settings");
+  this->setFixedSize(724, 385);
+  this->setWindowFlags(Qt::WindowStaysOnTopHint);
+
+  // Set tabWidget to settings tab
+  ui->tabWidget->setCurrentIndex(0);
+  connect(ui->tableWidget->horizontalHeader(), SIGNAL(sectionClicked(int)), ui->tableWidget, SLOT(sortByColumn(int)));
+
+}
 
 void SettingsWindowView::apply_settings()
 {
@@ -86,17 +118,6 @@ void SettingsWindowView::apply_settings()
     }
 }
 
-SettingsWindowView::SettingsWindowView(QWidget *parent) :
-  QDialog(parent),
-  ui(new Ui::SettingsWindowView)
-{
-  ui->setupUi(this);
-  this->setWindowTitle("Application Settings");
-  this->setFixedSize(724, 385);
-  this->setWindowFlags(Qt::WindowStaysOnTopHint);
-  connect(ui->tableWidget->horizontalHeader(), SIGNAL(sectionClicked(int)), ui->tableWidget, SLOT(sortByColumn(int)));
-
-}
 
 SettingsWindowView::~SettingsWindowView()
 {

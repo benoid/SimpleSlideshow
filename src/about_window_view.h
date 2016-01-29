@@ -15,19 +15,36 @@
     You should have received a copy of the GNU General Public License
     along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
 
-/* main.cpp
+/* about_window_view.h
 
-   Purpose: main function for SimpleSlideshow. */
+    Author: David Benoit
+    Purpose: Display a window with information about the application. */
 
+#ifndef ABOUT_WINDOW_VIEW_H
+#define ABOUT_WINDOW_VIEW_H
 
-#include <QApplication>
-#include "slideshow_controller.h"
+#include <QDialog>
 
-int main(int argc, char *argv[])
-{
-  QApplication a(argc, argv);
-  SlideshowController c;
-  c.begin_slideshow();
-
-  return a.exec();
+namespace Ui {
+  class AboutWindowView;
 }
+
+class AboutWindowView : public QDialog
+{
+  Q_OBJECT
+
+public:
+  explicit AboutWindowView(QWidget *parent = 0);
+  ~AboutWindowView();
+
+public slots:
+  void show_about_slideshow();
+  void show_about_qt();
+private slots:
+  void on_pushButton_clicked();
+
+private:
+  Ui::AboutWindowView *ui;
+};
+
+#endif // ABOUT_WINDOW_VIEW_H

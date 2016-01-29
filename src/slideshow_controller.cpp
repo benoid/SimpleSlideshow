@@ -1,8 +1,24 @@
+/*  Copyright (C) 2016 David Benoit
+
+    This file is part of SimpleSlideshow.
+
+    SimpleSlideshow is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleSlideshow is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
+
 /* slideshow_controller.cpp
  *
- * Author: David Benoit
- * Purpose: Implementation of the SlideshowController class
- */
+   Author: David Benoit
+   Purpose: Implementation of the SlideshowController class. */
 
 #include <QDesktopServices>
 #include <QDesktopWidget>
@@ -18,6 +34,7 @@ SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
   slideshow_window_view_->resize(800, 450);
   slideshow_data_model_ = new SlideshowDataModel;
   settings_window_view_ = new SettingsWindowView;
+  about_window_view_ = new AboutWindowView;
 
   connect(slideshow_window_view_, SIGNAL(settings_option_clicked()),
         this, SLOT(show_settings_view()));
@@ -39,6 +56,10 @@ SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
           this, SLOT(show_next_slide()));
   connect(settings_window_view_, SIGNAL(slide_folder_changed()),
           slideshow_data_model_->slideshow_queue(), SLOT(clear_queue()));
+  connect(slideshow_window_view_, SIGNAL(about_slideshow_clicked()),
+          this, SLOT(show_about_slideshow()));
+  connect(slideshow_window_view_, SIGNAL(about_qt_clicked()),
+          this, SLOT(show_about_qt()));
 
 /*************************/
 
@@ -450,6 +471,16 @@ void SlideshowController::show_settings_view()
   settings_window_view_->show();
   settings_window_view_->raise();
 
+}
+
+void SlideshowController::show_about_slideshow()
+{
+  about_window_view_->show_about_slideshow();
+}
+
+void SlideshowController::show_about_qt()
+{
+  about_window_view_->show_about_qt();
 }
 
 void SlideshowController::gui_ok_button_pressed()

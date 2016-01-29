@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     slideshow_queue.cpp \
     slideshow_data_model.cpp \
     slide_directory.cpp \
-    slide.cpp
+    slide.cpp \
+    about_window_view.cpp
 
 HEADERS  += slideshow_window_view.h \
     settings_window_view.h \
@@ -28,9 +29,11 @@ HEADERS  += slideshow_window_view.h \
     slideshow_data_model.h \
     slide_directory.h \
     slide.h \
-    queue_sort_order.h
+    queue_sort_order.h \
+    about_window_view.h
 
-FORMS += settings_window_view.ui
+FORMS += settings_window_view.ui \
+    about_window_view.ui
 
 DISTFILES += \
     dependencies_list.txt

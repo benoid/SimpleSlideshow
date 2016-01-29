@@ -1,15 +1,31 @@
+/*  Copyright (C) 2016 David Benoit
+
+    This file is part of SimpleSlideshow.
+
+    SimpleSlideshow is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleSlideshow is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
+
 /* slideshow_controller.h
- *
- * Author: David Benoit
- * Purpose: Container class representing a queue of slides.
- *          Responsible for storing Slide objects and
- *          determining which slide to display next.
- *          Stores information about slides as QStringLists
- *          for ordering purpose, and creates a QMap of
- *          slides for quick lookups, which the application
- *          performs whenever the filesystem is parsed
- *          (very often)
- */
+
+   Author: David Benoit
+   Purpose: Container class representing a queue of slides.
+            Responsible for storing Slide objects and
+            determining which slide to display next.
+            Stores information about slides as QStringLists
+            for ordering purpose, and creates a QMap of
+            slides for quick lookups, which the application
+            performs whenever the filesystem is parsed
+            (very often). */
 
 #ifndef SLIDESHOWQUEUE_H
 #define SLIDESHOWQUEUE_H

@@ -1,15 +1,29 @@
+/*  Copyright (C) 2016 David Benoit
+
+    This file is part of SimpleSlideshow.
+
+    SimpleSlideshow is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleSlideshow is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
+
 /* slideshow_controller.h
- * 
- * Author: David Benoit
- * Purpose: Driver class for the slideshow
- *          creates and manages a SlideshowDataModel 
- *          object, SlideshowWindowView object,
- *          and SettingsWindowView object. Sends data from
- *          config file to SlideshowDataModel.  Is responsible for
- *          starting the slideshow.
- *          
- *           
- */
+
+   Author: David Benoit
+   Purpose: Driver class for the slideshow
+            creates and manages a SlideshowDataModel
+            object, SlideshowWindowView object,
+            and SettingsWindowView object. Sends data from
+            config file to SlideshowDataModel.  Is responsible for
+            starting the slideshow. */
 
 #ifndef SLIDESHOWCONTROLLER_H
 #define SLIDESHOWCONTROLLER_H
@@ -20,6 +34,7 @@
 #include "slideshow_window_view.h"
 #include "slideshow_data_model.h"
 #include "settings_window_view.h"
+#include "about_window_view.h"
 
 class SlideshowController : public QObject
 {
@@ -50,6 +65,12 @@ public slots:
   // Display the settings gui to the screen
   void show_settings_view();
 
+  // Shows the about slideshow window
+  void show_about_slideshow();
+
+  // Shows the about Qt window
+  void show_about_qt();
+
   // Import settings from gui, save them to
   // to the config file, and close the gui
   void gui_ok_button_pressed();
@@ -65,6 +86,8 @@ private:
   SlideshowDataModel * slideshow_data_model_;
   SlideshowWindowView *slideshow_window_view_;
   SettingsWindowView * settings_window_view_;
+  AboutWindowView *about_window_view_;
+
 
 
 /*** Slideshow Timers ***/
