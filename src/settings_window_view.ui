@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="SlideShowSettings">
     <attribute name="title">
@@ -139,7 +139,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Disable Fullscreen Mode on Startup</string>
+      <string>Disable Fullscreen Mode </string>
      </property>
     </widget>
     <widget class="QCheckBox" name="checkBox_5">
@@ -273,6 +273,19 @@
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>40</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>on Startup</string>
+     </property>
+    </widget>
     <zorder>checkBox_5</zorder>
     <zorder>lineEdit</zorder>
     <zorder>lineEdit_2</zorder>
@@ -287,6 +300,7 @@
     <zorder>label_3</zorder>
     <zorder>label_5</zorder>
     <zorder>checkBox_6</zorder>
+    <zorder>label_6</zorder>
    </widget>
    <widget class="QWidget" name="ImageFolderSettings">
     <attribute name="title">
@@ -317,6 +331,11 @@
       </property>
      </column>
     </widget>
+   </widget>
+   <widget class="QWidget" name="About">
+    <attribute name="title">
+     <string>About SimpleSlideshow</string>
+    </attribute>
    </widget>
   </widget>
   <widget class="QPushButton" name="pushButton">
