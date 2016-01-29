@@ -4,7 +4,11 @@
  * Purpose: Implementation of the SlideshowController class
  */
 
-#include <qglobal.h>
+#include <QDesktopServices>
+#include <QDesktopWidget>
+#include <QTextStream>
+#include <QDir>
+#include <QDirIterator>
 #include "slideshow_controller.h"
 
 SlideshowController::SlideshowController(QObject *parent) : QObject(parent)

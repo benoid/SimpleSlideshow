@@ -16,12 +16,6 @@
 
 #include <QObject>
 #include <QTimer>
-#include <QMenu>
-#include <QDesktopServices>
-#include <QDesktopWidget>
-#include <QTextStream>
-#include <QDir>
-#include <QDirIterator>
 #include "queue_sort_order.h"
 #include "slideshow_window_view.h"
 #include "slideshow_data_model.h"

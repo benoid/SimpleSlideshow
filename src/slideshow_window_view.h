@@ -13,14 +13,12 @@
 #include <QLabel>
 #include <QMenu>
 #include <QString>
-#include <QFile>
-#include <QDebug>
-#include <QApplication>
 #include <QMediaPlayer>
 #include <QVideoWidget>
 #include <QMediaPlaylist>
 #include <QStackedWidget>
 #include "slideshow_data_model.h"
+
 
 class SlideshowWindowView : public QMainWindow
 {
@@ -50,7 +48,7 @@ public slots:
   void show_settings_view();
 
   // Closes the application
-  void quit_application(){QApplication::quit();}
+  void quit_application();
 
   // Display no images error to the screen
   void display_no_images_error();

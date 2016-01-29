@@ -11,7 +11,6 @@
 #define SLIDE_H
 
 #include <QString>
-#include <QFileInfo>
 #include <QDebug>
 
 enum SlideType

@@ -17,11 +17,7 @@
 #include <QObject>
 #include <QMap>
 #include <QMapIterator>
-#include <QDir>
-#include <QDebug>
 #include <QStringList>
-#include <cstdlib> // for rand()
-#include <ctime> // for time()
 
 #include "slide.h"
 #include "queue_sort_order.h"

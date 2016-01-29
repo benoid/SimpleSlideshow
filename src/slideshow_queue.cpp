@@ -4,6 +4,10 @@
  * Purpose: Implementation of the SlideshowQueue class
  */
 
+#include <QDir>
+#include <QDebug>
+#include <cstdlib> // for rand()
+#include <ctime> // for time()
 #include "slideshow_queue.h"
 
 SlideshowQueue::SlideshowQueue(QObject *parent) : QObject(parent)

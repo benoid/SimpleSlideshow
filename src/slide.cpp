@@ -4,6 +4,7 @@
  * Purpose: Implementation of the Slide class
  */
 
+#include <QFileInfo>
 #include "slide.h"
 
 Slide::Slide()

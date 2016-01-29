@@ -4,6 +4,9 @@
  * Purpose: Implementation of the SlideshowWindowView class
  */
 
+#include <QFile>
+#include <QApplication>
+#include <QDebug>
 #include "slideshow_window_view.h"
 
 SlideshowWindowView::SlideshowWindowView(QWidget *parent)
@@ -148,7 +151,12 @@ void SlideshowWindowView::show_settings_view()
   emit settings_option_clicked();
 }
 
+void SlideshowWindowView::quit_application()
+{
+  QApplication::quit();
+}
+
 void SlideshowWindowView::display_no_images_error()
 {
-   image_display_label_->setText("No images to display");
+  image_display_label_->setText("No images to display");
 }
