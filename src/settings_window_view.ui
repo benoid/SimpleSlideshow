@@ -336,6 +336,19 @@
     <attribute name="title">
      <string>About SimpleSlideshow</string>
     </attribute>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>431</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Website/Documentation: &lt;a href=&quot;benoid.github.io/SimpleSlideshow&quot;&gt;benoid.github.io/SimpleSlideshow&lt;/a&gt;.</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="pushButton">
