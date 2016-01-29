@@ -59,8 +59,11 @@ void SlideshowController::begin_slideshow()
     }
   else
     {
-
-      slideshow_window_view_->showFullScreen();
+      // showFullscreen() seems to only work on linux and mac. For now, we
+      // will emulate fullscreen with frameless maximized window so the app
+      // doesn't break on windows.
+      slideshow_window_view_->setWindowFlags(Qt::FramelessWindowHint);
+      slideshow_window_view_->showMaximized();
     }
   if (slideshow_data_model_->begin_on_marketing())
     {

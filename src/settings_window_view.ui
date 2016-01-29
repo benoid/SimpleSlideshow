@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="SlideShowSettings">
     <attribute name="title">
@@ -139,7 +139,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Disable Fullscreen Mode</string>
+      <string>Disable Fullscreen Mode on Startup</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="checkBox_5">
