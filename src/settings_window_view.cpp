@@ -42,9 +42,9 @@ SettingsWindowView::SettingsWindowView(QWidget *parent) :
   randomize_images_bool_ = 0;
   main_timer_interval_ = 0;
   marketing_timer_interval_ = 0;
-  main_sort_order_ = 0;
-  marketing_sort_order_ = 0;
-  marketing_playback_option_ = 0;
+  main_sort_order_ = (QueueSortOrder) 0;
+  marketing_sort_order_ =(QueueSortOrder) 0;
+  marketing_playback_option_ =(MarketingPlaybackOption) 0;
 
 
   // Set tabWidget to settings tab
