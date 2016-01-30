@@ -40,12 +40,14 @@ void AboutWindowView::show_about_slideshow()
 {
   ui->stackedWidget->setCurrentIndex(0);
   this->show();
+  this->raise();
 }
 
 void AboutWindowView::show_about_qt()
 {
   ui->stackedWidget->setCurrentIndex(1);
   this->show();
+  this->raise();
 }
 
 void AboutWindowView::on_pushButton_clicked()
