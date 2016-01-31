@@ -8,7 +8,7 @@
     but bits of code still remain)
   - Add functionality to perform operations
     on multiple folders simultaneously
-  - Fix folder selection dialog
+  - Add separate single info slide timer
 
 2) Lint code
   - Add more comments to private data members
@@ -29,5 +29,10 @@
    are not installed
 
 5) Documentation/ Doxygen comments
+
+6) Bugs
+   - Video longer than timer
+   - Not playing last marketing slide in folder
+   - Sometimes merging folders?
 
 
