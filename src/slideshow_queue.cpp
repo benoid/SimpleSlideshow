@@ -195,6 +195,11 @@ void SlideshowQueue::clear_queue()
 Slide SlideshowQueue::private_service()
 {
   Slide current_slide;
+  if (main_image_list_.size() <= 0 && marketing_image_list_.size() >= 0)
+    {
+      queue_marketing_slide_ = true;
+
+    }
   if (queue_marketing_slide_)
     {
       if (marketing_queue_index_ < marketing_image_list_.size())
