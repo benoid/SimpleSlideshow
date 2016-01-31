@@ -82,6 +82,9 @@ public slots:
   // to the config file, and close the gui
   void gui_apply_button_pressed();
 
+  // Restart timers and continue slideshow
+  void post_video_unpause();
+
 private:
   SlideshowDataModel * slideshow_data_model_;
   SlideshowWindowView *slideshow_window_view_;

@@ -39,7 +39,7 @@ SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
   connect(slideshow_window_view_, SIGNAL(settings_option_clicked()),
         this, SLOT(show_settings_view()));
   connect(slideshow_window_view_, SIGNAL(video_finished_playing()),
-          this, SLOT(show_next_slide()));
+          this, SLOT(post_video_unpause()));
   connect(slideshow_data_model_->slideshow_queue(), SIGNAL(finished_marketing()),
           &marketing_slide_timer_, SLOT(start()));
   connect(&marketing_slide_timer_, SIGNAL(timeout()),
@@ -145,8 +145,10 @@ void SlideshowController::show_next_slide()
       // For some reason, this does not stop the timer
       // Disconnecting and reconnecting is a workaround
       main_slide_timer_.stop();
+      marketing_slide_timer_.stop();
       slideshow_window_view_->display_video(current_slide.full_path());
       disconnect(&main_slide_timer_, SIGNAL(timeout()), this, SLOT(show_next_slide()));
+
     }
   qWarning() <<"[show]: " + current_slide.full_path();
 }
@@ -156,7 +158,8 @@ void SlideshowController::queue_marketing_slide()
   slideshow_data_model_->slideshow_queue()->
       queue_marketing_slide();
   marketing_slide_timer_.start(
-      slideshow_data_model_->marketing_timer_interval());
+      slideshow_data_model_->marketing_timer_interval() +
+        slideshow_data_model_->main_timer_interval());
 }
 
 void SlideshowController::set_all_settings_to_default()
@@ -500,6 +503,14 @@ void SlideshowController::gui_apply_button_pressed()
   import_settings_from_gui();
   build_slide_queue();
   export_settings_to_gui();
+}
+
+void SlideshowController::post_video_unpause()
+{
+  marketing_slide_timer_.start(
+    slideshow_data_model_->marketing_timer_interval() +
+      slideshow_data_model_->main_timer_interval());
+  this->show_next_slide();
 }
 
 void SlideshowController::warn_config_error(QString key, QString value_str)
