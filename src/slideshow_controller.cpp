@@ -157,9 +157,6 @@ void SlideshowController::queue_marketing_slide()
 {
   slideshow_data_model_->slideshow_queue()->
       queue_marketing_slide();
-  marketing_slide_timer_.start(
-      slideshow_data_model_->marketing_timer_interval() +
-        slideshow_data_model_->main_timer_interval());
 }
 
 void SlideshowController::set_all_settings_to_default()
@@ -507,9 +504,6 @@ void SlideshowController::gui_apply_button_pressed()
 
 void SlideshowController::post_video_unpause()
 {
-  marketing_slide_timer_.start(
-    slideshow_data_model_->marketing_timer_interval() +
-      slideshow_data_model_->main_timer_interval());
   this->show_next_slide();
 }
 
