@@ -66,6 +66,7 @@ public:
   void set_marketing_order(QueueSortOrder option);
   void set_main_order(QueueSortOrder option);
   void set_marketing_option(MarketingPlaybackOption option);
+  void set_indiv_info_interval(int set);
 
 
   // Accessors
@@ -76,6 +77,8 @@ public:
   bool randomize_images_bool();
   int main_timer_interval();
   int marketing_timer_interval();
+  int indiv_info_interval();
+
   bool fullscreen_disabled();
   QString slide_folder_path();
 
@@ -99,6 +102,7 @@ private:
   bool randomize_images_bool_;
   int main_timer_interval_;
   int marketing_timer_interval_;
+  int indiv_info_interval_;
 
   QueueSortOrder main_sort_order_;
   QueueSortOrder marketing_sort_order_;

@@ -34,7 +34,7 @@ SettingsWindowView::SettingsWindowView(QWidget *parent) :
 {
   ui->setupUi(this);
   this->setWindowTitle("Application Settings");
-  this->setFixedSize(724, 385);
+  this->setFixedSize(724, 438);
   this->setWindowFlags(Qt::WindowStaysOnTopHint);
 
   fullscreen_disabled_bool_ = 0;
@@ -67,6 +67,11 @@ void SettingsWindowView::apply_settings()
   if (temp > 0)
     {
       marketing_timer_interval_ = temp * 1000;
+    }
+  temp =  ui->lineEdit_3->value();
+  if (temp > 0)
+    {
+      indiv_info_interval_ = temp * 1000;
     }
   main_sort_order_ = (QueueSortOrder) ui->comboBox->currentIndex();
   marketing_sort_order_ = (QueueSortOrder) ui->comboBox_2->currentIndex();
@@ -178,6 +183,7 @@ void SettingsWindowView::set_up_gui()
 
   ui->lineEdit->setValue(main_timer_interval_/1000.0);
   ui->lineEdit_2->setValue(marketing_timer_interval_/1000.0);
+  ui->lineEdit_3->setValue(indiv_info_interval_/1000);
   ui->lineEdit_4->setText(slide_folder_path());
 
   ui->checkBox->setChecked(fullscreen_disabled_bool_);
@@ -253,6 +259,11 @@ void SettingsWindowView::set_marketing_option(MarketingPlaybackOption option)
   marketing_playback_option_ = option;
 }
 
+void SettingsWindowView::set_indiv_info_interval(int set)
+{
+  indiv_info_interval_ = set;
+}
+
 QueueSortOrder SettingsWindowView::main_order_option()
 {
   return main_sort_order_;
@@ -286,6 +297,11 @@ int SettingsWindowView::main_timer_interval()
 int SettingsWindowView::marketing_timer_interval()
 {
   return marketing_timer_interval_;
+}
+
+int SettingsWindowView::indiv_info_interval()
+{
+  return indiv_info_interval_;
 }
 
 bool SettingsWindowView::fullscreen_disabled()

@@ -103,8 +103,17 @@ void SlideshowController::begin_slideshow()
   // desktop effects
   int init_delay = slideshow_data_model_->init_delay_millisecs();
   QTimer::singleShot(init_delay, this, SLOT(show_next_slide()));
-  main_slide_timer_.start(
+
+  if (!slideshow_data_model_->slideshow_queue()->marketing_queued())
+    {
+      main_slide_timer_.start(
         slideshow_data_model_->main_timer_interval());
+    }
+  else
+    {
+      main_slide_timer_.start(
+        slideshow_data_model_->indiv_info_slide_interval());
+    }
   marketing_slide_timer_.start(
         slideshow_data_model_->marketing_timer_interval());
 }
@@ -133,7 +142,17 @@ void SlideshowController::show_next_slide()
       slideshow_window_view_->display_image(current_slide.full_path());
       connect(&main_slide_timer_, SIGNAL(timeout()),
           this, SLOT(show_next_slide()));
-      main_slide_timer_.start(slideshow_data_model_->main_timer_interval());
+
+      if (!slideshow_data_model_->slideshow_queue()->marketing_queued())
+        {
+          main_slide_timer_.start(
+            slideshow_data_model_->main_timer_interval());
+        }
+      else
+        {
+          main_slide_timer_.start(
+            slideshow_data_model_->indiv_info_slide_interval());
+        }
     }
   else if (current_slide.slide_type() == VIDEO)
     {
@@ -172,6 +191,7 @@ void SlideshowController::set_all_settings_to_default()
        slideshow_data_model_->profile_folder_path()
        + "/slideshow_display.conf");
  slideshow_data_model_->set_main_timer_interval(5000);
+ slideshow_data_model_->set_indiv_info_slide_interval(5000);
  slideshow_data_model_->set_marketing_timer_interval(50000);
  slideshow_data_model_->set_fullscreen_disabled(false);
  slideshow_data_model_->set_video_disabled(false);
@@ -244,6 +264,9 @@ void SlideshowController::save_config_file(QString file_path)
                  << endl;
       out_stream << "init_delay="
                  << slideshow_data_model_->init_delay_millisecs()
+                 << endl;
+      out_stream << "indiv_info_interval="
+                 << slideshow_data_model_->indiv_info_slide_interval()
                  << endl;
       config_file.close();
     }
@@ -408,6 +431,20 @@ void SlideshowController::parse_config_file(QString file_path)
                   warn_config_error(key, value_str);
                 }
             }
+          else if (key == "indiv_info_interval")
+            {
+              bool value_is_integer;
+              value_int = value_str.toInt(&value_is_integer);
+              if (value_is_integer && value_int >= 0)
+                {
+                  slideshow_data_model_->
+                      set_indiv_info_slide_interval(value_int);
+                }
+              else
+                {
+                  warn_config_error(key, value_str);
+                }
+            }
         }
       config_file.close();
     }
@@ -437,6 +474,8 @@ void SlideshowController::export_settings_to_gui()
         marketing_option());
   settings_window_view_->set_begin_on_marketing_slide(
         slideshow_data_model_->begin_on_marketing());
+  settings_window_view_->set_indiv_info_interval(
+        slideshow_data_model_->indiv_info_slide_interval());
   settings_window_view_->set_up_gui();
 }
 
@@ -460,6 +499,8 @@ void SlideshowController::import_settings_from_gui()
         settings_window_view_->marketing_option());
   slideshow_data_model_->set_begin_on_marketing(
         settings_window_view_->begin_on_marketing_slide_bool());
+  slideshow_data_model_->set_indiv_info_slide_interval(
+        settings_window_view_->indiv_info_interval());
   this->save_config_file(
         slideshow_data_model_->config_file_path());
 }
@@ -505,6 +546,9 @@ void SlideshowController::gui_apply_button_pressed()
 void SlideshowController::post_video_unpause()
 {
   this->show_next_slide();
+  if (!marketing_slide_timer_.isActive())
+    marketing_slide_timer_.start(slideshow_data_model_->
+                                 marketing_timer_interval());
 }
 
 void SlideshowController::warn_config_error(QString key, QString value_str)

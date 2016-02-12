@@ -138,6 +138,11 @@ MarketingPlaybackOption SlideshowQueue::marketing_option()
   return marketing_playback_option_;
 }
 
+bool SlideshowQueue::marketing_queued()
+{
+  return queue_marketing_slide_;
+}
+
 bool SlideshowQueue::contains(QString key)
 {
   if (slide_map_.contains(key))

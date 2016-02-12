@@ -97,7 +97,7 @@ private:
   // Slide is updated upon timeout
   QTimer main_slide_timer_;
 
-  // Marketing slides play upon timeout
+  // Marketing session plays upon timeout
   QTimer marketing_slide_timer_;
 
 /*** Private function members ***/

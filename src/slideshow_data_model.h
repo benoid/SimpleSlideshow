@@ -49,7 +49,7 @@ public:
   void set_video_disabled(bool set);
   void set_begin_on_marketing(bool set);
   void set_init_delay(int num_millisecs);
-
+  void set_indiv_info_slide_interval(int set);
 /*** Accessors ***/
   SlideshowQueue * slideshow_queue();
   QString profile_folder_path();
@@ -62,6 +62,7 @@ public:
   bool video_disabled();
   bool begin_on_marketing();
   int init_delay_millisecs();
+  int indiv_info_slide_interval();
 
 signals:
 
@@ -90,6 +91,7 @@ private:
   // Timer countdown intervals
   int main_timer_interval_;
   int marketing_timer_interval_;
+  int indiv_info_slide_interval_;
 
   // True if fullscreen display is disabled
   bool fullscreen_disabled_bool_;

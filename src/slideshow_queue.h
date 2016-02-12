@@ -89,6 +89,7 @@ public:
   QueueSortOrder main_order_option();
   QueueSortOrder marketing_order_option();
   MarketingPlaybackOption marketing_option();
+  bool marketing_queued();
 
 
 

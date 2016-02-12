@@ -83,6 +83,11 @@ void SlideshowDataModel::set_init_delay(int num_millisecs)
   init_delay_ms_ = num_millisecs;
 }
 
+void SlideshowDataModel::set_indiv_info_slide_interval(int set)
+{
+  indiv_info_slide_interval_ = set;
+}
+
 SlideshowQueue *SlideshowDataModel::slideshow_queue()
 {
   return slideshow_queue_;
@@ -136,5 +141,10 @@ bool SlideshowDataModel::begin_on_marketing()
 int SlideshowDataModel::init_delay_millisecs()
 {
   return init_delay_ms_;
+}
+
+int SlideshowDataModel::indiv_info_slide_interval()
+{
+  return indiv_info_slide_interval_;
 }
 
