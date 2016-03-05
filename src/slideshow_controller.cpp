@@ -41,7 +41,10 @@ SlideshowController::SlideshowController(QObject *parent) : QObject(parent)
   connect(slideshow_window_view_, SIGNAL(video_finished_playing()),
           this, SLOT(post_video_unpause()));
   connect(slideshow_data_model_->slideshow_queue(), SIGNAL(finished_marketing()),
-          &marketing_slide_timer_, SLOT(start()));
+          &marketing_slide_timer_, SLOT(start(slideshow_data_model_->
+                                              marketing_timer_interval())) +
+                                              slideshow_data_model_->
+                                              indiv_info_slide_interval());
   connect(&marketing_slide_timer_, SIGNAL(timeout()),
         this, SLOT(queue_marketing_slide()));
 
@@ -97,6 +100,7 @@ void SlideshowController::begin_slideshow()
     }
   if (slideshow_data_model_->begin_on_marketing())
     {
+      marketing_slide_timer_.stop();
       queue_marketing_slide();
     }
   // Delay display of first slide to account for external
@@ -115,7 +119,8 @@ void SlideshowController::begin_slideshow()
         slideshow_data_model_->indiv_info_slide_interval());
     }
   marketing_slide_timer_.start(
-        slideshow_data_model_->marketing_timer_interval());
+        slideshow_data_model_->marketing_timer_interval() +
+        slideshow_data_model_->indiv_info_slide_interval());
 }
 
 void SlideshowController::show_next_slide()
@@ -503,6 +508,12 @@ void SlideshowController::import_settings_from_gui()
         settings_window_view_->indiv_info_interval());
   this->save_config_file(
         slideshow_data_model_->config_file_path());
+  if (!slideshow_data_model_->slideshow_queue()->marketing_queued())
+    {
+       marketing_slide_timer_.start(slideshow_data_model_->marketing_timer_interval() +
+                                    slideshow_data_model_->indiv_info_slide_interval());
+    }
+  main_slide_timer_.start(slideshow_data_model_->main_timer_interval());
 }
 
 
@@ -548,7 +559,9 @@ void SlideshowController::post_video_unpause()
   this->show_next_slide();
   if (!marketing_slide_timer_.isActive())
     marketing_slide_timer_.start(slideshow_data_model_->
-                                 marketing_timer_interval());
+                                 marketing_timer_interval() +
+                                 slideshow_data_model_->
+                                 indiv_info_slide_interval());
 }
 
 void SlideshowController::warn_config_error(QString key, QString value_str)
