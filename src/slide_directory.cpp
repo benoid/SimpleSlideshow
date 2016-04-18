@@ -1,99 +1,152 @@
-/*  Copyright (C) 2016 David Benoit
-
-    This file is part of SimpleSlideshow.
-
-    SimpleSlideshow is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    SimpleSlideshow is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with SimpleSlideshow.  If not, see <http://www.gnu.org/licenses/>. */
-
-/* slide_directory.cpp
-
-   Author: David Benoit
-   Purpose: Implementation of the SlideDirectory class. */
-
 #include "slide_directory.h"
 
-SlideDirectory::SlideDirectory()
+SlideDirectory::SlideDirectory(QString dir_path)
 {
-  marketing_folder_ = false;
-  exclude_from_slideshow_ = false;
+  dir_path_ = dir_path;
 }
 
-QString SlideDirectory::name()
+bool SlideDirectory::is_informational()
 {
-  return name_;
+  return dir_path_.contains("-info");
 }
 
-QString SlideDirectory::full_path()
+QList<Slide> SlideDirectory::refresh_contents()
 {
-  return full_path_;
+  QList<Slide> new_contents;
+
+  if (!QDir(dir_path_).exists())
+    {
+      qDebug() << DEBUG_CONSOLE_WARNING_COLOR <<
+                  "Warning: " << DEBUG_CONSOLE_DEFAULT_COLOR <<
+                  "Directory "<< dir_path_ <<
+                  " does not exist.";
+      return new_contents;
+    }
+  QDirIterator itr(dir_path_,
+                   QDir::Files | QDir::NoSymLinks |
+                   QDir::Hidden, QDirIterator::Subdirectories);
+  int entry_count = 0;
+  while (itr.hasNext())
+    {
+      itr.next();
+
+      Slide new_slide(itr.filePath());
+      if (new_slide.is_valid())
+        {
+          if (!slide_set_.contains(new_slide))
+            {
+              this->insert(new_slide);
+              new_contents << new_slide;
+            }
+
+        }
+      ++entry_count;
+    }
+  if (this->size() > entry_count)
+    purge_nonexistant_entries();
+
+  return new_contents;
 }
 
-QStringList SlideDirectory::file_list()
+QList<Slide> SlideDirectory::qList()
 {
-  return file_list_;
+  SlideDirectoryIterator itr;
+  QList<Slide> l;
+  if (this->size() == 0)
+    return l;
+
+  for (itr = this->begin(); itr != this->end(); ++itr)
+    {
+      Slide s = *itr;
+      l.append(s);
+    }
+  return l;
 }
 
-bool SlideDirectory::is_marketing_folder()
+void SlideDirectory::build_from_local_dir()
 {
-  return marketing_folder_;
+  if (!QDir(dir_path_).exists())
+    {
+      qDebug() << DEBUG_CONSOLE_WARNING_COLOR <<
+                  "Warning: " << DEBUG_CONSOLE_DEFAULT_COLOR <<
+                  "Directory "<< QDir(dir_path_).absolutePath() <<
+                  " does not exist.";
+      return;
+    }
+  slide_set_.clear();
+  QDirIterator itr(dir_path_,
+                   QDir::Files | QDir::NoSymLinks |
+                   QDir::Hidden, QDirIterator::Subdirectories);
+  while (itr.hasNext())
+    {
+      itr.next();
+      Slide new_slide(itr.filePath());
+      if (new_slide.is_valid())
+        {
+          this->insert(new_slide);
+        }
+    }
 }
 
-bool SlideDirectory::is_excluded()
+bool SlideDirectory::contains(Slide s)
 {
-  return exclude_from_slideshow_;
+  Slide t(s.absolute_file_path());
+  return slide_set_.contains(t);
 }
 
-void SlideDirectory::set_dir_name(QString set_name)
+SlideDirectoryIterator SlideDirectory::begin()
 {
-  name_ = set_name;
+  return slide_set_.begin();
 }
 
-void SlideDirectory::set_full_path(QString set_path)
+SlideDirectoryIterator SlideDirectory::end()
 {
-  full_path_ = set_path;
+  return slide_set_.end();
 }
 
-void SlideDirectory::append_file_list(QString file)
+void SlideDirectory::insert(Slide s)
 {
-  file_list_.append(file);
+  Slide t(QFileInfo(s.file_path()).absoluteFilePath());
+  slide_set_.insert(t);
 }
 
-void SlideDirectory::set_marketing_folder(bool set_marketing_bool)
+void SlideDirectory::remove(Slide s)
 {
-  marketing_folder_ = set_marketing_bool;
+  slide_set_.remove(s);
 }
 
-void SlideDirectory::set_exclude_from_show(bool set_exclude_bool)
+void SlideDirectory::purge_nonexistant_entries()
 {
-  exclude_from_slideshow_ = set_exclude_bool;
+  if (this->size() == 0)
+    return;
+
+  if (!QDir(dir_path_).exists())
+    return;
+  SlideDirectory temp(dir_path_);
+  temp.build_from_local_dir();
+  QList<Slide> delete_list;
+  SlideDirectoryIterator itr;
+  for (itr = this->begin(); itr != this->end(); ++itr)
+    {
+      Slide s = *itr;
+      if (!temp.contains(s))
+        delete_list << s;
+    }
+  foreach (Slide s, delete_list)
+    {
+      this->remove(s);
+    }
 }
 
+QString SlideDirectory::dir_path()
+{
+  return QDir(dir_path_).absolutePath();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int SlideDirectory::size()
+{
+  return slide_set_.size();
+}
 
 
 
