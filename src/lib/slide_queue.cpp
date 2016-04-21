@@ -9,12 +9,6 @@ SlideQueue::SlideQueue(QObject *parent) : QObject(parent)
   this->main_session_length_ = 5;
   this->directory_refresh_rate_ms_ = 0;
 
- /* connect(&directory_refresh_timer_, SIGNAL(timeout()), this, SLOT(refresh_all_dirs()));
-  connect(&directory_refresh_timer_, SIGNAL(timeout()), &directory_refresh_timer_,
-          SLOT(start()));
-
-  directory_refresh_timer_.setInterval(dir_refresh_rate_ms());
-  directory_refresh_timer_.start(); */
 }
 
 Slide SlideQueue::private_service_main()
@@ -80,7 +74,6 @@ void SlideQueue::assimilate_info_queue(QList<Slide> new_slide_list)
   if (new_slide_list.empty())
     return;
 
-  qDebug () << "assimilating info";
   /*** ASSIMILATE SESSION ***/
   if (info_playback_option() == SESSION)
     {
@@ -91,7 +84,6 @@ void SlideQueue::assimilate_info_queue(QList<Slide> new_slide_list)
         front_slide = new_slide_list.front();
       info_slide_queue_.clear();
       QStringList dir_list = this->dir_list();
-      qDebug() <<  "inserting items";
       foreach (QString dir, dir_list)
         {
           if (info_directory_map_.contains(dir))
@@ -103,15 +95,12 @@ void SlideQueue::assimilate_info_queue(QList<Slide> new_slide_list)
       while (info_slide_queue_.front().absolute_file_path() !=
              front_slide.absolute_file_path())
         {
-          qDebug () << "ma: " << info_slide_queue_.front().absolute_file_path();
-          qDebug () << "fr: " << front_slide.absolute_file_path();
           info_slide_queue_.push_back(info_slide_queue_.front());
           info_slide_queue_.pop_front();
         }
     }
-  else if (info_queue_order() == INDIVIDUAL)
+  else if (info_playback_option() == INDIVIDUAL)
     {
-      qDebug() << "in random";
       info_slide_queue_.removeAll(Slide("break"));
       srand((time(NULL)));
       while(!new_slide_list.empty())
@@ -139,7 +128,6 @@ void SlideQueue::assimilate_info_queue(QList<Slide> new_slide_list)
         }
 
     }
-  qDebug () << "end assimilate info";
 }
 
 void SlideQueue::assimilate_main_queue(QList<Slide> new_slide_list)
@@ -147,11 +135,9 @@ void SlideQueue::assimilate_main_queue(QList<Slide> new_slide_list)
   if (new_slide_list.empty())
     return;
 
-  qDebug () << "assimilating main";
   /*** ASSIMILATE RANDOMLY ***/
   if (main_queue_order() == RANDOMIZED)
     {
-      qDebug() << "in random";
      main_slide_queue_.removeAll(Slide("break"));
       srand((time(NULL)));
       while(!new_slide_list.empty())
@@ -170,7 +156,6 @@ void SlideQueue::assimilate_main_queue(QList<Slide> new_slide_list)
           new_slide_list.pop_front();
 
       }
-  qDebug () << "end random";
     }
   /*** END ASSIMILATE RANDOMLY ***/
 
@@ -411,15 +396,12 @@ void SlideQueue::refresh_all_dirs()
         SlideDirectory* sd = &(*itr);
         new_slide_list_main << sd->refresh_contents();
       }
-  qDebug () << "refreshing info";
   if (info_directory_map_.size() > 0)
     for (itr = info_directory_map_.begin(); itr != info_directory_map_.end(); ++itr)
       {
-        qDebug () << "in r info loop";
         SlideDirectory* sd = &(*itr);
         new_slide_list_info << sd->refresh_contents();
       }
-  qDebug () << "finished refreshing dirs. assimilating...";
   assimilate_main_queue(new_slide_list_main);
   assimilate_info_queue(new_slide_list_info);
 }

@@ -1,7 +1,7 @@
 #ifndef SLIDEQUEUETESTS_H
 #define SLIDEQUEUETESTS_H
 #include "test_suite_macros.h"
-#include "slide_queue.h"
+#include "../src/lib/slide_queue.h"
 
 class SlideQueueTests
 {

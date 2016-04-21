@@ -6,7 +6,7 @@
 #include <QList>
 #include <QStringList>
 
-#include "ansi_colors.h"
+#include "../src/lib/ansi_colors.h"
 
 #define STATUS bool
 #define SUCCESS true

@@ -1,7 +1,7 @@
 #ifndef SLIDEDIRECTORYTESTS_H
 #define SLIDEDIRECTORYTESTS_H
 #include "test_suite_macros.h"
-#include "slide_directory.h"
+#include "../src/lib/slide_directory.h"
 #include <QDebug>
 
 class SlideDirectoryTests

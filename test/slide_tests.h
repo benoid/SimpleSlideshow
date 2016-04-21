@@ -1,7 +1,7 @@
 #ifndef SLIDETESTS_H
 #define SLIDETESTS_H
-#include "test_suite_macros.h"
-#include "slide.h"
+#include "./test_suite_macros.h"
+#include "../src/lib/slide.h"
 #include <QFile>
 
 class SlideTests

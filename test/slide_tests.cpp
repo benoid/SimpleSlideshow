@@ -64,7 +64,7 @@ STATUS SlideTests::test_process_slide_type()
 bool SlideTests::test_slide_exists()
 {
   SET_CURRENT_TEST_NAME("test_slide_exists");
-  Slide s("SimpleSlideshow2");
+  Slide s("run_tests");
   QFile slide_file(s.file_path());
   if (!slide_file.open(QFile::ReadOnly))
     {

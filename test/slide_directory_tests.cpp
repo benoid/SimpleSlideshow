@@ -4,7 +4,7 @@
 STATUS SlideDirectoryTests::test_create_slide_group()
 {
   SET_CURRENT_TEST_NAME("test_create_slide_name");
-  QString dir_path = "SimpleSlideshow2/test/images";
+  QString dir_path = "SimpleSlideshow/test_slides/CC0_images0";
   SlideDirectory sg("../" + dir_path);
   if (sg.dir_path().contains(dir_path))
     {
@@ -35,7 +35,7 @@ bool SlideDirectoryTests::test_is_informational()
 bool SlideDirectoryTests::test_build_from_local_dir()
 {
   SET_CURRENT_TEST_NAME("test_build_from_local_dir");
-  SlideDirectory sg("../SimpleSlideshow2/test/images");
+  SlideDirectory sg("../test_slides/CC0_images0");
   sg.build_from_local_dir();
   if (sg.size() <= 0)
   {
@@ -48,8 +48,8 @@ bool SlideDirectoryTests::test_build_from_local_dir()
 bool SlideDirectoryTests::test_refresh_contents()
 {
   SET_CURRENT_TEST_NAME("test_refresh_contents");
-  SlideDirectory sg1("../SimpleSlideshow2/test/images");
-  SlideDirectory sg2("../SimpleSlideshow2/test/images");
+  SlideDirectory sg1("../test_slides/CC0_images0");
+  SlideDirectory sg2("../test_slides/CC0_images0");
   STATUS status = SUCCESS;
   sg1.build_from_local_dir();
   if (sg1.qList().size() != sg2.refresh_contents().size() || sg2.qList().isEmpty())
@@ -58,13 +58,13 @@ bool SlideDirectoryTests::test_refresh_contents()
     status = FAILURE;
   }
   sg1.insert(Slide("hello.jpg"));
-  if (sg1.size() != 5)
+  if (sg1.size() != 10)
     {
       WARN_ERROR("insert hello.jpg failed")
       status = FAILURE;
     }
   sg1.refresh_contents();
-  if (sg1.size() != 4)
+  if (sg1.size() != 9)
     {
       WARN_ERROR("did not purge nonexistant files")
           status = FAILURE;
@@ -76,10 +76,10 @@ bool SlideDirectoryTests::test_refresh_contents()
 bool SlideDirectoryTests::test_qList()
 {
   SET_CURRENT_TEST_NAME("test_qList");
-  SlideDirectory sg("../SimpleSlideshow2/test/images");
+  SlideDirectory sg("../test_slides/CC0_images0");
   sg.build_from_local_dir();
   STATUS status = SUCCESS;
-  if (sg.qList().size() < 4)
+  if (sg.qList().size() < 9)
   {
     WARN_ERROR("SlideDirectory().qList() failed");
     status =  FAILURE;
@@ -95,10 +95,10 @@ bool SlideDirectoryTests::test_qList()
 bool SlideDirectoryTests::test_contains()
 {
   SET_CURRENT_TEST_NAME("test_contains");
-  SlideDirectory sg("../SimpleSlideshow2/test/images");
+  SlideDirectory sg("../test_slides/CC0_images0");
   sg.build_from_local_dir();
   QList<Slide> l = sg.qList();
-  if (!sg.contains(Slide("../SimpleSlideshow2/test/images/forest.jpg")))
+  if (!sg.contains(Slide("../test_slides/CC0_images0/forest.jpg")))
   {
     WARN_ERROR("SlideDirectory::contains() failed");
     return FAILURE;
@@ -109,22 +109,22 @@ bool SlideDirectoryTests::test_contains()
 bool SlideDirectoryTests::test_purge_nonexistant_entries()
 {
   SET_CURRENT_TEST_NAME("test_purge_nonexistant_entries");
-  SlideDirectory sg("../SimpleSlideshow2/test/images");
+  SlideDirectory sg("../test_slides/CC0_images0");
   sg.build_from_local_dir();
   STATUS status = SUCCESS;
-  if (sg.size() != 4)
+  if (sg.size() != 9)
   {
     WARN_ERROR("SlideDirectory::size() failed");
     status =  FAILURE;
   }
   sg.insert(Slide("hello.jpg"));
-  if (sg.size() != 5)
+  if (sg.size() != 10)
   {
     WARN_ERROR("SlideDirectory::size() failed");
     status =  FAILURE;
   }
   sg.purge_nonexistant_entries();
-  if (sg.size() != 4)
+  if (sg.size() != 9)
   {
     WARN_ERROR("SlideDirectory::purge_nonexistant_entries failed");
     status =  FAILURE;
