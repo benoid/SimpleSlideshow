@@ -23,6 +23,13 @@ public slots:
   RUN_TEST_SUITE(SlideDirectoryTests);
   RUN_TEST_SUITE(SlideQueueTests);
   qDebug() << "\n************************************************************\n";\
+
+
+  qDebug () << DEBUG_CONSOLE_DEFAULT_COLOR <<
+               "Note: if you are using qt-creator and all of the tests have failed, "
+               "make sure the build directory is located at the root of the project tree.  "
+               "Otherwise, the tests will not be able to find the required image files.";
+
   }
 };
 
