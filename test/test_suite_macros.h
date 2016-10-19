@@ -1,3 +1,4 @@
+// This a copy of the TinyTest library ported to Qt
 #ifndef TESTSUITEMACROS_H
 #define TESTSUITEMACROS_H
 
