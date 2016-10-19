@@ -1,4 +1,6 @@
 # SimpleSlideshow
+This branch is no longer actively maintained.  See branch ```v2.0-devel``` for the application rewrite currently in progress.
+
 A Qt-based application that creates a slideshow and updates in real time 
 based on files present in selected folders.  The goal is ease of use
 and minimal user interaction, so the user can add and remove slides quickly
