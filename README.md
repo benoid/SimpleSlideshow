@@ -1,5 +1,5 @@
 # simple-slideshow
-This branch is no longer actively maintained.  See branch ```v2.0-devel``` for the application rewrite currently in progress.
+This branch is no longer actively maintained.  See branch ```v2.0-devel``` for the application refactor/rewrite currently in progress.
 https://github.com/benoid/simple-slideshow/tree/v2.0-devel
 
 A Qt-based application that creates a slideshow and updates in real time 
